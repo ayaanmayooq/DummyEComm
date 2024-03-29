@@ -6,13 +6,14 @@ import { Edit, ShoppingCart } from "lucide-react"
 import { useShoppingCart } from "use-shopping-cart"
 
 import { Button } from "@/components/ui/button"
+import { Navbar } from "@/components/navbar"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
     return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
-            NAVBAR
+            <Navbar />
 
             <div className="flex items-center space-x-1">
                 <Link href="/cart">

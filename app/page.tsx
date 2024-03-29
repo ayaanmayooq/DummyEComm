@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 
 import { useState, useEffect } from 'react';
 
-import { fetchAllProducts } from "@/lib/data";
+import { fetchAllProducts, searchProduct } from "@/lib/data";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
