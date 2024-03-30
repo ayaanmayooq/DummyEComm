@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { Navbar } from "@/components/navbar"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -24,6 +25,17 @@ export function SiteHeader() {
                     </span>
                 </Link>
             </div>
+
+            <form className="hidden items-center lg:inline-flex">
+                <Input
+                    id="search"
+                    name="search"
+                    type="search"
+                    autoComplete="off"
+                    placeholder="Search products..."
+                    className="h-9 lg:w-[400px]"
+                />
+            </form>
 
             <div className="flex items-center space-x-1">
                 <Link href="/cart">

@@ -4,9 +4,14 @@ import { cn } from "@/lib/utils"
 import { useState, useEffect } from 'react';
 
 import { fetchAllProducts, searchProduct } from "@/lib/data";
+import { Product } from "@/lib/schema";
+import { siteConfig } from "@/config/site";
+
+import { Filters } from "@/components/filters";
+import { GridLayout } from "@/components/grid";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     fetchAllProducts()
@@ -21,15 +26,15 @@ export default function Home() {
   return (
     <div className="">
       <div className="px-4 pt-20 text-center">
-        <h1 className="text-4xl font-extrabold tracking-normal">Dummy E-Commerce</h1>
+        <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
         
-        <p className="mx-auto mt-4 max-w-3xl text-base">Description</p>
+        <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
       </div>
       <div>
         <main className="mx-auto max-w-6xl px-6">
           <div className="flex items-center justify-between border-b border-gray-200 pb-4 pt-24 dark:border-gray-800">
             <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
-            {products.length} products
+            {products.length} product{products.length === 1 ? "" : "s"}
             </h1>
             {/* Product Sort */}
           </div>
@@ -39,8 +44,11 @@ export default function Home() {
               Products
             </h2>
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              <div className="hidden lg:block">{/* Product filters */}</div>
+              <div className="hidden lg:block">
+                <Filters />
+              </div>
               {/* Product grid */}
+              <GridLayout products={products} />
             </div>
           </section>
         </main>
