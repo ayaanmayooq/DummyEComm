@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 
 import { SiteBG } from "@/components/site-background"
 import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
+import { Navbar } from "@/components/navbar"
 
 import { Providers } from "@/components/providers";
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body className={cn("min-h-screen bg-background antialiased font-sans", fontSans.variable)}>
           <Providers>
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
+              <Navbar />
               {/* <SiteBG/> */}
               <div className="flex-1">
                 {children}

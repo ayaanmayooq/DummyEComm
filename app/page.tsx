@@ -3,25 +3,32 @@ import { cn } from "@/lib/utils"
 
 import { useState, useEffect } from 'react';
 
-import { fetchAllProducts, searchProduct } from "@/lib/data";
+import { fetchAllProducts, fetchProductsWithOptions, searchProduct } from "@/lib/data";
 import { Product } from "@/lib/schema";
 import { siteConfig } from "@/config/site";
 
 import { Filters } from "@/components/filters";
 import { GridLayout } from "@/components/grid";
 
+import { useSearchParams } from 'next/navigation'
+
 export default function Home() {
+  const searchParams = useSearchParams()
+
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchAllProducts()
+    const category = searchParams.get('category');
+
+    fetchProductsWithOptions(category)
       .then(data => {
+        console.log(data);
         setProducts(data.products);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="">
