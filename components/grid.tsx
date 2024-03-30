@@ -34,7 +34,7 @@ export function GridLayout({ products }: Props) {
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
             <Image
             placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAEERAAIAAAAFAAAAEgESAAIAAAAHAAAA..."
+            blurDataURL="/product-placeholder.jpg"
               src={product.images[0]}
               alt={product.title}
               width={1000}
