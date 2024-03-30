@@ -1,4 +1,5 @@
-import { formatLabel } from "./utils";
+import { formatLabel, formatSlug } from "./utils";
+import { Product } from "./schema";
 
 export async function fetchAllProducts() {
     try {
@@ -23,6 +24,11 @@ export async function fetchProductsWithOptions(category: string | null, searchQu
     try {
         const response = await fetch(url);
         const data = await response.json();
+
+        data.products.forEach((product: Product) => {
+            product.slug = formatSlug(product.title);
+        });
+
         return data;
     } catch (error) {
         console.error('Error fetching products:', error);
