@@ -25,7 +25,7 @@ export function Filters() {
   
   useEffect(() => {
     unCheckOnSearch();
-  }, [searchParams]);
+  }, );
 
   function unCheckOnSearch() {
     queryParams = new URLSearchParams(window.location.search);
