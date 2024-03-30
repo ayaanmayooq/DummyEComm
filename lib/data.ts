@@ -1,3 +1,5 @@
+import { formatLabel } from "./utils";
+
 export async function fetchAllProducts() {
     try {
         const response = await fetch('https://dummyjson.com/products?limit=100');
@@ -9,11 +11,15 @@ export async function fetchAllProducts() {
     }
 }
 
-export async function fetchProductsWithOptions(category: string | null, limit: number = 100, skip: number = 0) {
-    let url = `https://dummyjson.com/products?limit=${limit}&skip=${skip}&category=${category}`;
+export async function fetchProductsWithOptions(category: string | null, searchQuery:string | null, limit: number = 100, skip: number = 0) {
+    let url = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
     if (category !== null) {
         url = `https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`;
     }
+    else if (searchQuery !== null) {
+        url = `https://dummyjson.com/products/search?q=${searchQuery}&limit=${limit}&skip=${skip}`;
+    }
+
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -50,15 +56,15 @@ export async function getSingleProduct(id: String) {
 
 export async function getProductCategories() {
     try {
-        const response = await fetch('https://dummyjson.com/products/categories');
-        const data = await response.json();
-        return data;
-
+      const response = await fetch('https://dummyjson.com/products/categories');
+      const data = await response.json();
+      const categoryObjects = data.map((value: string) => ({ value, label: formatLabel(value) }));
+      return categoryObjects;
     } catch (error) {
-        console.error('Error fetching products:', error);
-        throw error;
+      console.error('Error fetching products:', error);
+      throw error;
     }
-}
+  }  
 
 export async function getProductByCategory(category: String) {
     try {

@@ -10,8 +10,19 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
+import React from "react"
 
 export function Navbar() {
+    const pathname = usePathname()
+    const router = useRouter()
+
+    function onSearch(event: React.SyntheticEvent<HTMLFormElement>) {
+        event.preventDefault()
+        const formData = new FormData(event.currentTarget)
+        const searchQuery = formData.get('search')
+        router.replace(`/?search=${searchQuery}`)
+    }
+
     return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
@@ -25,7 +36,7 @@ export function Navbar() {
                 </Link>
             </div>
 
-            <form className="hidden items-center lg:inline-flex">
+            <form onSubmit={onSearch} className="hidden items-center lg:inline-flex">
                 <Input
                     id="search"
                     name="search"

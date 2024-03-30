@@ -4,28 +4,42 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation"
 import { formatLabel } from "@/lib/utils";
 import { Category } from "@/lib/schema";
+import { getProductCategories } from "@/lib/data";
 
 export function Filters() {
   const router = useRouter();
 
   const [categories, setCategories] = useState<Category[]>([]);
+  const searchParams = useSearchParams();
+
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products/categories')
-      .then(res => res.json())
-      .then((data: string[]) => {
-        const categoryObjects = data.map((value) => ({ value, label: formatLabel(value) }));
+    getProductCategories()
+      .then((categoryObjects: Category[]) => {
         setCategories(categoryObjects);
       })
       .catch(error => {
         console.error(error);
       });
   }, []);
+  
+  useEffect(() => {
+    unCheckOnSearch();
+  }, [searchParams]);
 
-  let queryParams: any = "";
+  function unCheckOnSearch() {
+    queryParams = new URLSearchParams(window.location.search);
+    if (queryParams.has("category")) return
+    const checkboxes = document.getElementsByName("category")
+
+    checkboxes.forEach((item: any) => {
+      item.checked = false
+    })
+  }
+
+  let queryParams: URLSearchParams;
 
   function handleClick(checkbox: HTMLInputElement) {
-    console.log("handling checkbox")
     if (typeof window !== "undefined") {
       queryParams = new URLSearchParams(window.location.search);
     }
@@ -45,9 +59,9 @@ export function Filters() {
         queryParams.append(checkbox.name, checkbox.value)
       }
     }
-
-    const path = window.location.pathname + "?" + queryParams.toString();
-    router.push(path);
+    console.log(queryParams)
+    const path = window.location.pathname + "/?" + queryParams.toString();
+    router.replace(path);
 
   }
 

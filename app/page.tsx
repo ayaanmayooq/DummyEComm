@@ -19,10 +19,10 @@ export default function Home() {
 
   useEffect(() => {
     const category = searchParams.get('category');
+    const searchQuery = searchParams.get('search');
 
-    fetchProductsWithOptions(category)
+    fetchProductsWithOptions(category, searchQuery)
       .then(data => {
-        console.log(data);
         setProducts(data.products);
       })
       .catch(error => {
