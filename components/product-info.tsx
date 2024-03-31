@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Product } from "@/lib/schema"
 import { useState } from "react"
+import { Input } from "@/components/ui/input"
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,20 +14,36 @@ interface Props {
 
 export function ProductInfo({ product }: Props) {
     // cosnt [quantity, setQuantity] = useState()
-    const { addItem, cartDetails, incrementItem } = useShoppingCart()
+    const { addItem, cartDetails, incrementItem, setItemQuantity } = useShoppingCart()
     const isInCart = !!cartDetails?.[product.id]
     const discountPrice = product.price
+    const [quantity, setQuantity] = useState(1);
 
-    function addToCart() {
-        const item = {
-            ...product,
-            product_data: {
+    const cartStuff = Object.entries(cartDetails!).map(([_, product]) => product)
 
-            }
+
+    const handleQuantityChange = (newQuantity: number) => {
+        if (newQuantity >= 1 && newQuantity <= product.stock) {
+          setQuantity(newQuantity);
         }
-        isInCart ? incrementItem(item.id) : addItem(item)
-        notify()
-    }
+      };
+
+      function addToCart() {
+        const item = {
+          ...product,
+        };
+      
+        if (isInCart) {
+            const existingItem = cartStuff.find((product) => product.id === item.id);
+            const newQuantity = existingItem!.quantity + quantity;
+            setItemQuantity(item.id, newQuantity);
+        } else {
+          addItem(item);
+          setItemQuantity(item.id, quantity)
+        }
+        setQuantity(1);
+        notify();
+      }
 
     const notify = () => toast(`${product.title} added to cart`);
 
@@ -58,6 +75,18 @@ export function ProductInfo({ product }: Props) {
 
             <form className="mt-6">
                 <div className="mt-4 flex">
+                <div className="m-auto mr-4">
+                <Input
+                  id={`quantity-${product.id}-info`}
+                  name={`quantity-${product.id}-info`}
+                  type="number"
+                  className="w-16"
+                  min={1}
+                  max={product.stock}
+                  value={quantity}
+                  onChange={(event) => handleQuantityChange(Number(event.target.value))}
+                />
+                </div>
                 <Button
                     type="button"
                     onClick={addToCart}

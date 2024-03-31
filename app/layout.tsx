@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
-import { fontMono, fontSans, inter } from "@/lib/fonts";
+import { fontMono, fontSans, inter, roboto } from "@/lib/fonts";
 import {cn} from "@/lib/utils"
 import { siteConfig } from "@/config/site";
 
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head/>
-        <body className={cn("min-h-screen bg-background antialiased font-sans", fontSans.variable)}>
+        <body className={cn("min-h-screen bg-background antialiased roboto", roboto.variable)}>
           <Providers>
             <div className="relative flex min-h-screen flex-col">
               <Navbar />

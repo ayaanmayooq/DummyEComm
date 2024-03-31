@@ -12,6 +12,7 @@ export interface Product {
     images: string[];
     slug: string;
     sellPrice: number;
+    quantity: number;
   }
 
 export interface Category {

@@ -21,34 +21,42 @@ export function Navbar() {
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         const searchQuery = formData.get('search')
-        router.replace(`/?search=${searchQuery}`)
+        router.replace(`products/?search=${searchQuery}`)
     }
 
     return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
-            <div className="flex gap-6 md:gap-10">
+    <header className="sticky top-0 z-40 w-full border-b bg-white bg-opacity-100">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-1 px-6 sm:space-x-0">
+            <div className="flex gap-3 md:gap-4">
                 <Link href="/" className="flex items-center space-x-2">
-                    <Icons.logo className="h-10 w-10" />
+                    <Icons.logo className="h-10 w-10 rounded-lg invert border border-slate-800" />
                     
-                    <span className="inline-block text-xl font-bold">
+                    <span className="inline-block font-medium">
                     {siteConfig.name}
+                    </span>
+                </Link>
+
+                <Link href="/products" className="flex items-center ml-2 text-gray-500 hover:text-gray-900 hover:font-medium">
+                    <span className="inline-block m-auto">
+                    Store
                     </span>
                 </Link>
             </div>
 
-            <form onSubmit={onSearch} className="hidden items-center lg:inline-flex">
+
+
+            <form onSubmit={onSearch} className="hidden items-center lg:inline-flex ">
                 <Input
                     id="search"
                     name="search"
                     type="search"
                     autoComplete="off"
                     placeholder="Search products..."
-                    className="h-9 lg:w-[400px]"
+                    className="h-9 lg:w-[400px] bg-slate-100 placeholder-gray-700"
                 />
             </form>
 
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-1 justify-self-end">
                 <Link href="/cart">
                     <Button size="sm" variant="ghost">
                     <ShoppingCart className="h-5 w-5" />

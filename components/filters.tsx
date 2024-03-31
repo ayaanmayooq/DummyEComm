@@ -76,9 +76,9 @@ export function Filters() {
   }
 
   return (
-    <form className="sticky top-20">
+    <form className="sticky top-20 md:overflow-auto lg:overflow-visible md:max-h-96 lg:max-h-full ">
       <h3 className="py-5 text-lg font-bold">Categories</h3>
-      <div className="space-y-4">
+      <div className="space-y-4 ">
         {categories.map((option) => (
           <div
             key={option.value}

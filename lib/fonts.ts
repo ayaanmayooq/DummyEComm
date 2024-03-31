@@ -1,7 +1,8 @@
 import {
     JetBrains_Mono as FontMono,
     Plus_Jakarta_Sans as FontSans,
-    Inter
+    Inter,
+    Roboto
 } from "next/font/google"
 
 export const fontSans = FontSans({
@@ -17,4 +18,11 @@ export const fontMono = FontMono({
 export const inter = Inter({
      subsets: ["latin"],
      variable: "--inter",
-    });
+    })
+
+export const roboto = Roboto({
+    subsets: ["latin"],
+    weight: ["100", "500"],
+    variable: "--roboto",
+
+})

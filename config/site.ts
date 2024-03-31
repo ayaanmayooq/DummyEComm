@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-    name: "dummyEComm",
-    description: "Simple E-Commerce app built for InnoCaption Case Study using DummyJSON API",
+    name: "dummy EComm",
+    description: "Simple E-Commerce app built for InnoCaption Case Study",
     footer: [
         {name: "Home", href: "/ "},
         {name: "About", href: "#"},

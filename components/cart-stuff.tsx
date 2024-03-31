@@ -36,7 +36,7 @@ export function CartStuff() {
           <p className="mb-4 mt-2 text-sm text-muted-foreground">
             Add products to your cart.
           </p>
-          <Link href="/">
+          <Link href="/products">
             <Button size="sm" className="relative">
               <Plus className="mr-2 h-4 w-4" />
               Add Products
@@ -83,7 +83,7 @@ export function CartStuff() {
                   name={`quantity-${productIdx}`}
                   type="number"
                   className="w-16"
-                  min={1}
+                  min={0}
                   max={product.stock}
                   value={product.quantity}
                   onChange={event => setItemQuantity(product.id, Number(event.target.value))}
