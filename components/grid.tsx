@@ -2,11 +2,10 @@
 
 import Image from "next/image"
 import Link from "next/link"
-// import { urlForImage } from "@/sanity/lib/image"
 import { XCircle } from "lucide-react"
 import { Product } from "@/lib/schema"
 import { formatSlug } from "@/lib/utils"
-
+import { formatCurrencyString } from "use-shopping-cart";
 // import { shimmer, toBase64 } from "@/lib/image"
 
 interface Props {
@@ -35,7 +34,7 @@ export function GridLayout({ products }: Props) {
             <Image
             placeholder="blur"
             blurDataURL="/product-placeholder.jpg"
-              src={product.images[0]}
+              src={product.thumbnail}
               alt={product.title}
               width={1000}
               height={1000}
@@ -43,7 +42,7 @@ export function GridLayout({ products }: Props) {
             />
           </div>
           <h3 className="mt-4 font-medium">{product.title}</h3>
-          <p className="mt-2 font-medium">$ {product.price}</p>
+          <p className="mt-2 font-medium">{formatCurrencyString({value: product.price, currency: "USD"})}</p>
         </Link>
       ))}
     </div>

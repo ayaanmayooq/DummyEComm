@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Product } from "@/lib/schema"
 import { useState } from "react"
-import { useShoppingCart } from "use-shopping-cart"
+import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,7 +38,7 @@ export function ProductInfo({ product }: Props) {
 
             <div className="mt-3">
                 <h2 className="sr-only">Product Information</h2>
-                <p className="text-3xl tracking-tight">${product.price}</p>
+                <p className="text-3xl tracking-tight">{formatCurrencyString({value: product.price, currency: "USD"})}</p>
             </div>
 
             <div className="mt-6">

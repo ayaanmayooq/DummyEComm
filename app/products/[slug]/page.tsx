@@ -1,3 +1,4 @@
+import { Gallery } from "@/components/gallery";
 import { ProductInfo } from "@/components/product-info";
 import { getSingleProduct } from "@/lib/data"
 import { Product } from "@/lib/schema";
@@ -16,8 +17,8 @@ export default async function ProductPage({ params }: Props) {
         <div className="mx-auto max-w-2xl lg:max-w-none">
           {/* Product */}
           <div className="pb-20 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
-            {/* Product gallery */}
-            <ProductInfo product={product}/>
+            <Gallery product={product} />
+            <ProductInfo product={product} />
           </div>
         </div>
       </main>

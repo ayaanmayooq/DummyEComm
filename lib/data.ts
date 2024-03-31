@@ -27,6 +27,7 @@ export async function fetchProductsWithOptions(category: string | null, searchQu
 
         data.products.forEach((product: Product) => {
             // product.slug = formatSlug(product.title);
+            product.price = product.price * 100
             product.slug = product.id
         });
 
@@ -53,7 +54,11 @@ export async function getSingleProduct(id: String) {
     try {
         const response = await fetch(`https://dummyjson.com/products/${id}`);
         const data = await response.json();
-        return data;
+
+        data.price = data.price * 100
+        data.slug = data.id
+
+        return data
 
     } catch (error) {
         console.error('Error fetching products:', error);
