@@ -31,7 +31,7 @@ export default function Cart() {
 
           <section
             aria-labelledby="summary-heading"
-            className="mt-16 rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-6 shadow-md dark:border-gray-900 dark:bg-black sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
+            className="mt-16 rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-6 shadow-md sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
           >
             <h2 id="summary-heading" className="text-lg font-medium">
               Order summary
@@ -42,13 +42,13 @@ export default function Cart() {
                 <dt className="text-sm">Subtotal</dt>
                 <dd className="text-sm font-medium">{formattedTotalPrice}</dd>
               </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
+              <div className="flex items-center justify-between border-t border-gray-200 pt-4 ">
                 <dt className="flex items-center text-sm">
                   <span>Shipping estimate</span>
                 </dt>
                 <dd className="text-sm font-medium">{formatCurrencyString({value: shippingAmount, currency: "USD"})}</dd>
               </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
+              <div className="flex items-center justify-between border-t border-gray-200 pt-4 ">
                 <dt className="text-base font-medium">Order total</dt>
                 <dd className="text-base font-medium">{formatCurrencyString({value: totalAmount, currency: "USD"})}</dd>
               </div>
