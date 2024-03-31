@@ -6,7 +6,7 @@ import {cn} from "@/lib/utils"
 import { siteConfig } from "@/config/site";
 
 import { SiteBG } from "@/components/site-background"
-import { SiteFooter } from "@/components/site-footer"
+import { SiteFooter } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 
 import { Providers } from "@/components/providers";

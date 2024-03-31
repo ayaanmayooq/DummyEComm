@@ -15,6 +15,7 @@ import React from "react"
 export function Navbar() {
     const pathname = usePathname()
     const router = useRouter()
+    const {cartCount} = useShoppingCart()
 
     function onSearch(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -51,7 +52,7 @@ export function Navbar() {
                 <Link href="/cart">
                     <Button size="sm" variant="ghost">
                     <ShoppingCart className="h-5 w-5" />
-                    <span className="ml-2 text-sm font-bold">0</span>
+                    <span className="ml-2 text-sm font-bold">{cartCount}</span>
                     <span className="sr-only">Cart</span>
                     </Button>
                 </Link>

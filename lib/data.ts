@@ -26,7 +26,8 @@ export async function fetchProductsWithOptions(category: string | null, searchQu
         const data = await response.json();
 
         data.products.forEach((product: Product) => {
-            product.slug = formatSlug(product.title);
+            // product.slug = formatSlug(product.title);
+            product.slug = product.id
         });
 
         return data;
