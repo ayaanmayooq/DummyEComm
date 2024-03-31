@@ -29,6 +29,8 @@ export async function fetchProductsWithOptions(category: string | null, searchQu
             // product.slug = formatSlug(product.title);
             product.price = product.price * 100
             product.slug = product.id
+            product.sellPrice = product.price
+            product.price = product.sellPrice * (1 - product.discountPercentage / 100)
         });
 
         return data;
@@ -57,6 +59,8 @@ export async function getSingleProduct(id: String) {
 
         data.price = data.price * 100
         data.slug = data.id
+        data.sellPrice = data.price
+        data.price = data.sellPrice * (1 - data.discountPercentage / 100)
 
         return data
 

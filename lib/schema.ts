@@ -11,6 +11,7 @@ export interface Product {
     thumbnail: string;
     images: string[];
     slug: string;
+    sellPrice: number;
   }
 
 export interface Category {

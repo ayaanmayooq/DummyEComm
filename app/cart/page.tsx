@@ -55,8 +55,8 @@ export default function Cart() {
             </dl>
 
             <div className="mt-6">
-              <Button className="w-full" disabled={isDisabled}>
-                <Link href="/checkout">
+              <Button className="w-full bg-slate-200 hover:bg-slate-400" disabled={isDisabled}>
+                <Link href="/checkout" className="h-full w-full">
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 {isLoading ? "Loading..." : "Checkout"}
                 </Link>

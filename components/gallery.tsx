@@ -11,7 +11,6 @@ interface Props {
 
 export function Gallery({ product }: Props) {
     const [selectedImage, setSelectedImage] = useState(0)
-    console.log(product.images)
   
     return (
     <div className="flex flex-col-reverse">
@@ -44,7 +43,7 @@ export function Gallery({ product }: Props) {
 
       {/* Main Image */}
       {/* Image gitter bug */}
-      <div className="aspect-h-1 aspect-w-1 w-full">
+      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden">
         <Image
           priority
           src={product.images[selectedImage]}

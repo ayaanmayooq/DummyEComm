@@ -8,7 +8,7 @@ export function SiteFooter() {
                 <a href="https://www.linkedin.com/in/ayaan-shaik/" target="_blank" className=""><Image src="/linkedin-logo.png" width="30" height="30" alt="Linkedin Logo" /></a>
                 <a href="https://github.com/ayaanmayooq" target="_blank" className="dark:invert"><Image src="/github-logo.png" width="30" height="30" alt="GitHub Logo" /></a>
             </div>
-            <a className="" href="https://github.com/ayaanmayooq/portfolio" target="_blank">
+            <a className="" href="https://github.com/ayaanmayooq/dummyecomm" target="_blank">
                 <span className={`${GeistMono.className} block px-3`}>
                     Engineered by Ayaan<br />using Next.js and Tailwind CSS
                 </span>

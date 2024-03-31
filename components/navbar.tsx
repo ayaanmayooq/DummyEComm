@@ -25,7 +25,7 @@ export function Navbar() {
     }
 
     return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background bg-white dark:bg-black">
+    <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-4 px-6 sm:space-x-0">
             <div className="flex gap-6 md:gap-10">
                 <Link href="/" className="flex items-center space-x-2">
@@ -56,7 +56,7 @@ export function Navbar() {
                     <span className="sr-only">Cart</span>
                     </Button>
                 </Link>
-                <ThemeToggle />
+                {/* <ThemeToggle /> */}
             </div>
         </div>
 

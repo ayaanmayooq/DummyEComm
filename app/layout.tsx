@@ -32,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Providers>
             <div className="relative flex min-h-screen flex-col">
               <Navbar />
-              {/* <SiteBG/> */}
+              <SiteBG/>
               <div className="flex-1">
                 {children}
               </div>

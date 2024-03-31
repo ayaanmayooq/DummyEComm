@@ -15,6 +15,7 @@ export function ProductInfo({ product }: Props) {
     // cosnt [quantity, setQuantity] = useState()
     const { addItem, cartDetails, incrementItem } = useShoppingCart()
     const isInCart = !!cartDetails?.[product.id]
+    const discountPrice = product.price
 
     function addToCart() {
         const item = {
@@ -25,25 +26,34 @@ export function ProductInfo({ product }: Props) {
         }
         isInCart ? incrementItem(item.id) : addItem(item)
         notify()
-  }
+    }
 
-  const notify = () => toast(`${product.title} added to cart`);
+    const notify = () => toast(`${product.title} added to cart`);
 
     return (
         <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={true}/>
 
+            <p className="mt-2">{product.brand}</p>
             <h1 className="text-3xl font-bold tracking-tight">{product.title}</h1>
-            <p>{product.brand}</p>
-
-            <div className="mt-3">
-                <h2 className="sr-only">Product Information</h2>
-                <p className="text-3xl tracking-tight">{formatCurrencyString({value: product.price, currency: "USD"})}</p>
-            </div>
-
+            
             <div className="mt-6">
                 <h3 className="sr-only">Description</h3>
                 <div className="space-y-6 text-base">{product.description}</div>
+            </div>
+
+            <div className="mt-3 flex">
+                <p className="text-2xl tracking-tight">{formatCurrencyString({value: discountPrice, currency: "USD"})}</p>
+                <p className="text-xl text-red-600 mx-3 m-auto">-{product.discountPercentage}%</p>
+            </div>
+
+            <div className="">
+                <p className="">Price: <s>{formatCurrencyString({value: product.sellPrice, currency: "USD"})}</s></p>
+            </div>
+
+            <div className="mt-6">
+                <h3 className="sr-only">In Stock:</h3>
+                <div className="space-y-6 text-base">In Stock: {product.stock}</div>
             </div>
 
             <form className="mt-6">
