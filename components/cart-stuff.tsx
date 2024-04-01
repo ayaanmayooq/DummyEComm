@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, X, XCircle, Plus } from "lucide-react"
+import { Trash2, X, XCircle, Plus } from "lucide-react"
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart"
 import { Product } from "use-shopping-cart/core"
 import { ToastContainer, toast } from 'react-toastify';
@@ -28,7 +28,7 @@ export function CartStuff() {
   return (
     <>
     <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={true}/>
-    {cartStuff.length === 0 && 
+    {cartStuff.length === 0 ? ( 
       <div className="flex h-[450px] shrink-0 items-center justify-center rounded-md border-2 border-dashed border-gray-300 dark:border-gray-800">
         <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
           <XCircle className="h-10 w-10 text-muted-foreground" />
@@ -44,51 +44,55 @@ export function CartStuff() {
           </Link>
         </div>
       </div>
-    }
-    <ul
-      role="list"
-      className="divide-y divide-gray-200 border-y border-gray-200 dark:divide-gray-500 dark:border-gray-500"
-    >
-      {cartStuff.map((product, productIdx) => (
-        <li key={product.id} className="flex py-6 sm:py-10">
-          <div className="shrink-0">
-            <Image
-              src={product.thumbnail}
-              alt={product.title}
-              width={200}
-              height={200}
-              className="h-24 w-24 rounded-md border-2 border-gray-200 object-cover object-center dark:border-gray-800 sm:h-48 sm:w-48"
-            />
-          </div>
-
-          <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-            <div className="relative justify-between pr-9 sm:flex sm:gap-x-6 sm:pr-0">
-              <div>
-                <div className="flex justify-between">
-                  <h3 className="text-sm">
-                    <Link href={`/products/${product.slug}`} className="font-medium">
-                      {product.title}
-                    </Link>
-                  </h3>
-                </div>
-                <p className="mt-1 text-sm font-medium">{formatCurrencyString({value: product.price, currency: "USD"})}</p>
-              </div>
-
-              <div className="mt-4 sm:mt-0 sm:pr-9">
-                <label htmlFor={`quantity-${productIdx}`} className="sr-only">
-                  Quantity, {product.title}
-                </label>
-                <Input
-                  id={`quantity-${productIdx}`}
-                  name={`quantity-${productIdx}`}
-                  type="number"
-                  className="w-16"
-                  min={0}
-                  max={product.stock}
-                  value={product.quantity}
-                  onChange={event => setItemQuantity(product.id, Number(event.target.value))}
-                />
-                <div className="absolute right-0 top-0">
+    ): (
+    <table className="w-full">
+  <thead className="border-t-0">
+    <tr className="border-b ">
+      <th className="h-12 pr-3 text-left !pl-0">Item</th>
+      <th className="h-12 pr-3 text-left"></th>
+      <th className="h-12 pr-3 text-left">Quantity</th>
+      <th className="h-12 pr-3 text-left small:table-cell">Price</th>
+      <th className="h-12 pr-0 text-right">Total</th>
+    </tr>
+  </thead>
+  <tbody className="border-ui-border-base border-b">
+    {cartStuff.map((product, productIdx) => (
+      <tr key={product.id} className="border-b w-full">
+        <td className="h-12 !pl-0 p-4 w-24">
+          <a className="flex small:w-24 w-12" href={`/products/${product.slug}`}>
+            <div className="rounded-lg relative w-full overflow-hidden p-4 ease-in-out duration-150 aspect-[1/1] flex justify-center items-center">
+              <Image 
+              src={product.thumbnail} 
+              alt="Thumbnail" 
+              draggable="false" 
+              loading="lazy" 
+              className="h-full w-full object-cover object-center absolute inset-0 border border-[#e5e7eb]" 
+              width={400} 
+              height={400} />
+            </div>
+          </a>
+        </td>
+        <td className="h-12 pr-3 text-left">
+          <p className="font-normal">{product.title}</p>
+          <p className="font-normal inline-block w-full text-slate-700 text-sm">{product.brand}</p>
+        </td>
+        <td className="h-12 pr-3 m-auto">
+          {/* Quantity component */}
+          <div className="mt-4 sm:mt-0 sm:pr-9 flex">
+              <label htmlFor={`quantity-${productIdx}`} className="sr-only">
+                Quantity, {product.title}
+              </label>
+              <Input
+                id={`quantity-${productIdx}`}
+                name={`quantity-${productIdx}`}
+                type="number"
+                className="w-16"
+                min={1}
+                max={product.stock}
+                value={product.quantity}
+                onChange={event => setItemQuantity(product.id, Number(event.target.value))}
+              />
+                <div className="ml-1">
                   <Button
                     variant="ghost"
                     type="button"
@@ -96,20 +100,22 @@ export function CartStuff() {
                     onClick={() => removeCartItem(product)}
                   >
                     <span className="sr-only">Remove</span>
-                    <X className="h-5 w-5" aria-hidden="true" />
+                    <Trash2 className="h-5 w-5" aria-hidden="true" />
                   </Button>
                 </div>
-              </div>
             </div>
-
-            <p className="mt-4 flex space-x-2 text-sm">
-              <Clock className="h-5 w-5 shrink-0" aria-hidden="true" />
-              <span>Ships immediately</span>
-            </p>
-          </div>
-        </li>
-      ))}
-    </ul>
+        </td>
+        <td className="h-12 pr-3 small:table-cell">
+          {formatCurrencyString({value: product.price, currency: "USD"})}
+        </td>
+        <td className="h-12 pr-0 text-right">
+          {formatCurrencyString({value: product.price * product.quantity, currency: "USD"})}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+    )}
     </>
   )
 }

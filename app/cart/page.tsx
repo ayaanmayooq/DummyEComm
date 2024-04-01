@@ -11,18 +11,18 @@ export default function Cart() {
   const { totalPrice, cartDetails, cartCount } = useShoppingCart()
   const [isLoading, setLoading] = useState()
   const isDisabled = isLoading || cartCount! === 0
-  const shippingAmount = cartCount! > 0 ? 500 : 0
+  const shippingAmount = cartCount! > 0 ? 0 : 0
   const totalAmount = totalPrice! + shippingAmount
 
   return (
     <div>
       <main className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="text-3xl font-medium tracking-tight sm:text-4xl">
           Shopping Cart
         </h1>
 
         <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
-          <section aria-labelledby="cart-heading" className="lg:col-span-7">
+          <section aria-labelledby="cart-heading" className="lg:col-span-8">
             <h2 id="cart-heading" className="sr-only">
               Items in your shopping cart
             </h2>
@@ -31,7 +31,7 @@ export default function Cart() {
 
           <section
             aria-labelledby="summary-heading"
-            className="mt-16 rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-6 shadow-md sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
+            className="mt-16 rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-6 shadow-md sm:p-6 lg:col-span-4 lg:mt-0 lg:p-8"
           >
             <h2 id="summary-heading" className="text-lg font-medium">
               Order summary

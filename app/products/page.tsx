@@ -45,12 +45,14 @@ export default function Products() {
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              <div className="hidden lg:block">
+            <div className="flex gap-x-8">
+              <div className="hidden md:basis-1/3 md:block lg:basis-1/4">
                 <Filters />
               </div>
               {/* Product grid */}
-              <GridLayout products={products} />
+              <div className="flex-1 md:basis-2/3 lg:basis-3/4">
+                <GridLayout products={products} />
+              </div>
             </div>
           </section>
         </main>
