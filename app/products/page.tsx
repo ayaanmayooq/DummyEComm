@@ -17,6 +17,9 @@ export default function Products() {
 
   const [products, setProducts] = useState<Product[]>([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+
   useEffect(() => {
     const category = searchParams.get('category');
     const searchQuery = searchParams.get('search');
@@ -28,7 +31,14 @@ export default function Products() {
       .catch(error => {
         console.error(error);
       });
+      setCurrentPage(1);
   }, [searchParams]);
+
+  const indexOfLastItem: number = currentPage * itemsPerPage;
+  const indexOfFirstItem: number = indexOfLastItem - itemsPerPage;
+  const currentItems: Product[] = products.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <div className="">
@@ -51,7 +61,22 @@ export default function Products() {
               </div>
               {/* Product grid */}
               <div className="flex-1 md:basis-2/3 lg:basis-3/4">
-                <GridLayout products={products} />
+                <GridLayout products={currentItems} />
+                <div className='flex justify-center mt-8'>
+                  {Array.from({ length: Math.ceil(products.length / itemsPerPage) }, (_, i) => i + 1).map(number => (
+                    <button
+                      key={number}
+                      onClick={() => paginate(number)}
+                      className={`mx-1 px-4 py-2 text-sm font-medium border rounded-md shadow-sm ${
+                        number === currentPage
+                          ? 'bg-slate-500 text-white border-transparent'
+                          : 'bg-white text-slate-500 border-gray-300 hover:bg-blue-50'
+                      } transition-colors duration-150 ease-in-out`}
+                    >
+                      {number}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
