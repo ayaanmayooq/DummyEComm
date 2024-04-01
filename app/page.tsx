@@ -9,6 +9,7 @@ import { siteConfig } from "@/config/site";
 
 import { Filters } from "@/components/filters";
 import { GridLayout } from "@/components/grid";
+import {ProductCarousel} from '@/components/product-carousel';
 
 import { useSearchParams } from 'next/navigation'
 
@@ -31,12 +32,15 @@ export default function Home() {
   }, [searchParams]);
 
   return (
+    <div>
     <div className="h-[60vh] flex justify-center items-center border-y border-slate-200 bg-gray-100">
       <div className="mx-auto px-4 text-center">
         <h1 className="text-3xl h1-core font-medium tracking-normal">{siteConfig.name}</h1>
         <p className="mt-2 h2-core text-2xl text-slate-800">{siteConfig.description}</p>
         <p className="mb-4 h2-core text-2xl text-slate-800">Powered by Next.js and DummyJSON API</p>
       </div>
+    </div>
+    <ProductCarousel products={products} />
     </div>
 
   );

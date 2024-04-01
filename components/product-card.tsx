@@ -5,11 +5,15 @@ import { formatCurrencyString } from "use-shopping-cart"
 
 interface Props {
     product: Product
+    scale: boolean
 }
 
-export function ProductCard({ product }: Props) {
+export function ProductCard({ product, scale }: Props) {
     return (
-        <Link key={product.id} href={`/products/${product.slug}`} className="group text-sm hover:border hover:border-gray-200 p-3 hover:dark:border-gray-800 rounded-lg hover:scale-105 duration-200">
+        <Link 
+        key={product.id} 
+        href={`/products/${product.slug}`} 
+        className={`group text-sm p-3 rounded-lg ${scale === true ? 'hover:scale-105 duration-200 hover:border-gray-200 hover:border' : ''} duration-200`}>
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-80 transition-shadow ease-in-out duration-150 relative aspect-[16/13]">
             <Image
             placeholder="blur"

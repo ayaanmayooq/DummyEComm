@@ -30,7 +30,7 @@ export default function Cart() {
           </section>
 
           <section
-            className="mt-16 px-4 py-6 shadow-md sm:p-6 lg:col-span-4 lg:mt-0 lg:p-8"
+            className="mt-16 px-4 py-6 shadow-md sm:p-6 lg:col-span-4 lg:mt-0 lg:p-8 bg-white"
           >
             <h1 className="text-2xl font-medium tracking-tight sm:text-3xl mb-5">
               Summary

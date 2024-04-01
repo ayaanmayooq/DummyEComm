@@ -28,13 +28,16 @@ export function Navbar() {
     <header className="sticky top-0 z-40 w-full border-b bg-white bg-opacity-100">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between space-x-1 px-6 sm:space-x-0">
             <div className="flex gap-3 md:gap-4">
-                <Link href="/" className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2">
+                <a href="https://ayaanmayooq.vercel.app/" target="_blank">
                     <Icons.logo className="h-10 w-10 rounded-lg invert border border-slate-800" />
-                    
+                </a>
+                <Link href="/" className="">
                     <span className="inline-block font-medium">
                     {siteConfig.name}
                     </span>
                 </Link>
+                </div>
 
                 <Link href="/products" className="flex items-center ml-2 text-gray-500 hover:text-gray-900 hover:font-medium">
                     <span className="inline-block m-auto">
@@ -45,7 +48,7 @@ export function Navbar() {
 
 
 
-            <form onSubmit={onSearch} className="hidden items-center lg:inline-flex ">
+            <form onSubmit={onSearch} className="items-center lg:inline-flex ">
                 <Input
                     id="search"
                     name="search"
