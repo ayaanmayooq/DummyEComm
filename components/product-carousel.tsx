@@ -28,6 +28,10 @@ export const ProductCarousel = ({ products }: Props) => {
         slidesPerView={5}
         pagination={{ clickable: true }}
         breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
           640: {
             slidesPerView: 2,
             spaceBetween: 10,
