@@ -5,11 +5,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { Edit, ShoppingCart } from "lucide-react"
 import { useShoppingCart } from "use-shopping-cart"
 import { siteConfig } from "@/config/site"
-import { Icons } from "@/components/icons"
+import Image from "next/image"
+
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ThemeToggle } from "@/components/theme-toggle"
 import React from "react"
 
 export function Navbar() {
@@ -30,7 +30,13 @@ export function Navbar() {
             <div className="flex gap-3 md:gap-4">
                 <div className="flex items-center space-x-2">
                 <a href="https://ayaanmayooq.vercel.app/" target="_blank">
-                    <Icons.logo className="h-10 w-10 rounded-lg invert border border-slate-800" />
+                <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    width={100}
+                    height={100}
+                    className="h-10 w-10 rounded-lg invert border border-slate-800"
+                />
                 </a>
                 <Link href="/" className="">
                     <span className="inline-block font-medium">
