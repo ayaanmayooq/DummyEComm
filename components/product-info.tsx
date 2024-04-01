@@ -31,6 +31,10 @@ export function ProductInfo({ product }: Props) {
       function addToCart() {
         const item = {
           ...product,
+          sku: product.id,
+          name: product.title,
+          currency: "USD",
+          price: product.price,
         };
       
         if (isInCart) {
