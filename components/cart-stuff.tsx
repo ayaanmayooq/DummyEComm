@@ -58,8 +58,8 @@ export function CartStuff() {
   <tbody className="border-ui-border-base border-b">
     {cartStuff.map((product, productIdx) => (
       <tr key={product.id} className="border-b w-full">
-        <td className="h-12 !pl-0 p-4 w-24">
-          <a className="flex small:w-24 w-12" href={`/products/${product.slug}`}>
+        <td className="h-36 !pl-0 p-4 w-36">
+          <a className="flex small:w-24 w-full" href={`/products/${product.slug}`}>
             <div className="rounded-lg relative w-full overflow-hidden p-4 ease-in-out duration-150 aspect-[1/1] flex justify-center items-center">
               <Image 
               src={product.thumbnail} 

@@ -90,7 +90,7 @@ export function ProductInfo({ product }: Props) {
                 <Button
                     type="button"
                     onClick={addToCart}
-                    className="w-full bg-violet-600 py-6 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                    className="w-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 hover:opacity-95 text-white disabled:bg-slate-900"
                 >
                     Add to cart
                 </Button>
