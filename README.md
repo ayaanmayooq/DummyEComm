@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Commerce Website for Innovation Intern Position
+
+This project is a dummy e-commerce website designed as a case study for an Innovation Intern position. Built with Next.js and styled using Tailwind CSS, it showcases product listings, a shopping cart system, and user interactions typical of an e-commerce platform.
+
+## Features
+
+- Product listings with pagination
+- Shopping cart functionality
+- Responsive design for all devices
+- Dynamic routing with Next.js
+- State management with a global state
+
+## Technology Stack
+
+- **Frontend:** Next.js, Tailwind CSS
+- **State Management:** Context API / Redux (if used)
+- **Deployment:** Vercel / Netlify (specify which one you used or both)
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+### Prerequisites
+
+- Node.js (version 12.x or later)
+- npm (version 6.x or later) or yarn (version 1.22.x or later)
+
+### Installation
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/your-repository-name.git
+cd your-repository-name
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Navigate to http://localhost:3000 to view the project in your browser. The page will automatically reload if you make edits.
