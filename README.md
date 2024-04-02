@@ -1,4 +1,4 @@
-# E-Commerce Website for Innovation Intern Position
+# E-Commerce Website for InnoCaption Intern Position
 
 This project is a dummy e-commerce website designed as a case study for an InnoCaption Intern position. Built with Next.js and styled using Tailwind CSS, it showcases product listings, a shopping cart system, and user interactions typical of an e-commerce platform.
 
