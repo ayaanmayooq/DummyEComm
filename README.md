@@ -21,7 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installation
 
-1. **Clone the repository**
+### **Clone the repository**
 
 Use the following command to clone the repository to your local machine:
 ```bash
@@ -29,7 +29,7 @@ git clone https://github.com/yourusername/your-repository-name.git
 cd your-repository-name
 ```
 
-2. **Install Dependencies**
+### **Install Dependencies**
 
 Run the following command to install the necessary dependencies:
 ```bash
