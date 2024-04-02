@@ -19,8 +19,6 @@ These instructions will get you a copy of the project up and running on your loc
 - Node.js (version 12.x or later)
 - npm (version 6.x or later) or yarn (version 1.22.x or later)
 
-### Installation
-
 ### **Clone the repository**
 
 Use the following command to clone the repository to your local machine:
