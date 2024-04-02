@@ -10,6 +10,12 @@ This project is a dummy e-commerce website designed as a case study for an InnoC
 - Dynamic routing with Next.js
 - Get product data from [https://dummyjson.com/](https://dummyjson.com/)
 
+## Demo
+
+The live demo hosted on Vercel is available at: [https://dummyecomm.vercel.app/](https://dummyecomm.vercel.app/)
+
+Feel free to explore the functionalities and see the application in action!
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -19,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 - Node.js (version 12.x or later)
 - npm (version 6.x or later) or yarn (version 1.22.x or later)
 
-### **Clone the repository**
+### Clone the repository
 
 Use the following command to clone the repository to your local machine:
 ```bash
@@ -27,16 +33,16 @@ git clone https://github.com/yourusername/your-repository-name.git
 cd your-repository-name
 ```
 
-### **Install Dependencies**
+### Install Dependencies
 
 Run the following command to install the necessary dependencies:
 ```bash
 npm install
 ```
 
-### Running the project
+## Running the project
 
-**Build the project and Start the server**
+### Build the project and Start the server
 
 As requested in the instructions, I have modified npm start to jointly run
 ```bash
