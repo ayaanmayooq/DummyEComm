@@ -8,6 +8,7 @@ This project is a dummy e-commerce website designed as a case study for an InnoC
 - Shopping cart functionality
 - Responsive design for all devices
 - Dynamic routing with Next.js
+- Get product data from [https://dummyjson.com/](https://dummyjson.com/)
 
 ## Getting Started
 
@@ -21,6 +22,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installation
 
 1. **Clone the repository**
+
 Use the following command to clone the repository to your local machine:
 ```bash
 git clone https://github.com/yourusername/your-repository-name.git
@@ -28,6 +30,7 @@ cd your-repository-name
 ```
 
 2. **Install Dependencies**
+
 Run the following command to install the necessary dependencies:
 ```bash
 npm install
@@ -35,21 +38,19 @@ npm install
 
 ### Running the project
 
-1. **Build the project**
-To create a production build, run:
-```bash
-npm run build
-```
-This step compiles the Next.js application and prepares it for deployment or local serving.
+**Build the project and Start the server**
 
-2. **Start the server**
-After the build process completes, you can start the server with:
+As requested in the instructions, I have modified npm start to jointly run
+```bash
+npm run build && next start
+```
+Therefore, to create a production build and start the server, the following command can be used:
 ```bash
 npm start
 ```
 Please note: npm start relies on the build created by npm run build. Make sure to complete the build step before attempting to start the server.
 
-Navigate to http://localhost:3000 to view the project in your browser. The page will automatically reload if you make edits.
+Navigate to http://localhost:3000 to view the project in your browser.
 
 ### Development Mode
 

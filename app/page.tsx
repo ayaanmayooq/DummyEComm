@@ -7,29 +7,22 @@ import { fetchAllProducts, fetchProductsWithOptions, searchProduct } from "@/lib
 import { Product } from "@/lib/schema";
 import { siteConfig } from "@/config/site";
 
-import { Filters } from "@/components/filters";
-import { GridLayout } from "@/components/grid";
 import {ProductCarousel} from '@/components/product-carousel';
 
-import { useSearchParams } from 'next/navigation'
 
 export default function Home() {
-  const searchParams = useSearchParams()
 
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const category = searchParams.get('category');
-    const searchQuery = searchParams.get('search');
-
-    fetchProductsWithOptions(category, searchQuery)
-      .then(data => {
-        setProducts(data.products);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, [searchParams]);
+      fetchProductsWithOptions(null, null)
+        .then(data => {
+          setProducts(data.products);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  }, []);
 
   return (
     <div>

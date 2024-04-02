@@ -10,8 +10,6 @@ export function Filters() {
   const router = useRouter();
 
   const [categories, setCategories] = useState<Category[]>([]);
-  // const searchParams = useSearchParams();
-
 
   useEffect(() => {
     getProductCategories()
